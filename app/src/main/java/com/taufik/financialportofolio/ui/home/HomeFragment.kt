@@ -85,7 +85,7 @@ class HomeFragment : Fragment() {
                     binding.pieChart.apply {
                         this.data = pieData
                         setUsePercentValues(true)
-                        isDrawHoleEnabled = false
+                        isDrawHoleEnabled = true
                         description.isEnabled = false
                         setEntryLabelColor(R.color.black)
                         animateY(1000, Easing.EaseInOutQuad)
