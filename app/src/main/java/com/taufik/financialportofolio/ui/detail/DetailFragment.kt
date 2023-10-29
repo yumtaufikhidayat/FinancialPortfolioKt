@@ -17,7 +17,7 @@ class DetailFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val detailAdapter by lazy { DetailAdapter() }
-    private var listOfTrx: Data? = null
+    private var data: Data? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,11 +55,11 @@ class DetailFragment : Fragment() {
     }
 
     private fun getBundleData() {
-        listOfTrx = arguments?.getParcelable(EXTRA_LIST_TRANSACTION)
+        data = arguments?.getParcelable(EXTRA_LIST_TRANSACTION)
     }
 
     private fun setTransactionsData() {
-        listOfTrx?.let { data ->
+        data?.let { data ->
             binding.tvLabelAndPercentage.text = getString(
                 R.string.txt_label_percentage,
                 data.label,
