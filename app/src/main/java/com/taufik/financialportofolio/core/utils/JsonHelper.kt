@@ -23,51 +23,51 @@ class JsonHelper(private val context: Context) {
     }
 
     fun loadData(): List<TransactionsResponseItem> {
-        val list = ArrayList<TransactionsResponseItem>()
         val jsonArray = JSONArray(parsingFileToString())
+        val transactionsResponseItemList = mutableListOf<TransactionsResponseItem>()
         try {
             for (i in 0 until jsonArray.length()) {
                 val jsonObject = jsonArray.getJSONObject(i)
                 val type = jsonObject.getString("type")
                 val data = jsonObject.getJSONArray("data")
+                val dataList = mutableListOf<Data>()
 
                 for (j in 0 until data.length()) {
                     val item = data.getJSONObject(j)
                     val label = item.getString("label")
                     val percentage = item.getString("percentage")
                     val dataDetails = item.getJSONArray("data")
+                    val dataXList = mutableListOf<DataX>()
 
                     for (k in 0 until dataDetails.length()) {
                         val details = dataDetails.getJSONObject(k)
                         val trxDate = details.getString("trx_date")
                         val nominal = details.getInt("nominal")
 
-                        val listDataX = listOf(
-                            DataX(
-                                nominal = nominal,
-                                trxDate = trxDate
-                            )
+                        val dataX = DataX(
+                            nominal = nominal,
+                            trxDate = trxDate
                         )
-
-                        val listData = listOf(
-                            Data(
-                                dataX = listDataX,
-                                label = label,
-                                percentage = percentage
-                            )
-                        )
-
-                        val transactionsResponseItem = TransactionsResponseItem(
-                            data = listData,
-                            type = type
-                        )
-                        list.add(transactionsResponseItem)
+                        dataXList.add(dataX)
                     }
+
+                    val data = Data(
+                        dataX = dataXList,
+                        label = label,
+                        percentage = percentage
+                    )
+                    dataList.add(data)
                 }
+
+                val item = TransactionsResponseItem(
+                    data = dataList,
+                    type = type
+                )
+                transactionsResponseItemList.add(item)
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        return list
+        return transactionsResponseItemList
     }
 }
