@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.taufik.financialportofolio"
-        minSdk = 29
+        minSdk = 31
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
