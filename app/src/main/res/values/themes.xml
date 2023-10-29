@@ -1,9 +1,22 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.FinancialPortofolio" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.FinancialPortfolio" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">@android:color/holo_blue_dark</item>
     </style>
 
-    <style name="Theme.FinancialPortofolio" parent="Base.Theme.FinancialPortofolio" />
+    <style name="Theme.FinancialPortfolio" parent="Base.Theme.FinancialPortfolio" />
+
+    <!-- Splash Screen Theme. -->
+    <style name="Theme.AppSplash" parent="Base.Theme.FinancialPortfolio">
+        <item name="android:windowSplashScreenBackground">@android:color/holo_blue_dark</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.FinancialPortfolio</item>
+
+        <!-- Status bar and Nav bar configs -->
+        <item name="android:statusBarColor">@android:color/holo_blue_dark</item>
+        <item name="android:navigationBarColor">@android:color/holo_blue_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
 </resources>
