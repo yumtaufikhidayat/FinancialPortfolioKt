@@ -63,11 +63,11 @@ class HomeFragment : Fragment() {
                     val entries = ArrayList<PieEntry>()
 
                     data.forEach { item ->
-                        item.data.forEach { dataX ->
-                            val label = dataX.label
-                            val percentage = dataX.percentage
+                        item.data.forEach { data ->
+                            val label = data.label
+                            val percentage = data.percentage
                             val pieEntry = PieEntry(percentage.toFloat(), label)
-                            pieEntry.data = dataX
+                            pieEntry.data = data
                             entries.add(pieEntry)
                         }
                     }
